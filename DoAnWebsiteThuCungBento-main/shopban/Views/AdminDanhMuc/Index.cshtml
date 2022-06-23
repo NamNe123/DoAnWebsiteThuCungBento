@@ -1,0 +1,41 @@
+﻿@model IEnumerable<shopban.Models.DANHMUC>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Quản lý danh mục</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới danh mục", "Themmoidanhmuc")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Mã danh mục
+        </th>
+        <th>
+            Tên danh mục
+        </th>
+        <th>
+            Chức năng
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.MaDM)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TenDanhMuc)
+    </td>
+    <td>
+        @Html.ActionLink("Sửa", "SuaDm", new { id = item.MaDM }) |
+        @Html.ActionLink("Chi tiết", "Details", new { id = item.MaDM }) |
+        @Html.ActionLink("Xóa", "Xoadm", new { id = item.MaDM })
+    </td>
+</tr>
+}
+</table>

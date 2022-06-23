@@ -1,0 +1,70 @@
+﻿@using shopban.Models
+@model List<Giohang>
+@{
+    ViewBag.Title = "GioHang";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="margin-top: 100px;" class="cart-main-area pb-100px">
+    <div class="container">
+        <h3 class="cart-page-title">Giỏ Hàng</h3>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="table-content table-responsive cart-table-content">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Ảnh</th>
+                                    <th>Tên sản phẩm</th>
+                                    <th>Giá</th>
+                                    <th>Số lượng</th>
+                                    <th>Thành Tiền</th>
+                                    <th>Xóa</th>
+                                    <th>Cập nhập</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr style="text-align:center; font-weight:bold">
+                                        <td><img style="width:250px;height:250px;" src="@item.sAnhbia"></td>
+                                        <td class="product-name"> @item.sTenSp</td>
+
+                                        @using (Html.BeginForm("CapnhatGiohang", "Giohang", new { @iMaSp = item.iMaSp }))
+                                        {
+                                            <td class="product-price-cart">@String.Format("{0:0,0}", item.dDongia) </td>
+
+                                            <td class="product-quantity">
+                                                <div class="cart-plus-minus">
+                                                    <input class="cart-plus-minus-box" type="text" name="txtSoluong" value="@item.iSoluong" />
+                                                </div>
+                                            </td>
+                                            <td>@String.Format("{0:0,0}", item.dThanhtien) </td>
+
+                                            <td class="product-price-cart"> @Html.ActionLink("Xóa", "XoaGiohang", new { @iMaSp = item.iMaSp })</td>
+                                            <td> <input type="submit" value="Cập Nhật" /></td>
+                                        }
+                                    </tr>
+                                }
+                                <tr style="font-weight: bold; text-align:right; color:red">
+                                    <td colspan="4"> Số lượng: @ViewBag.Tongsoluong </td>
+                                    <td colspan="5"> Tổng tiền: @String.Format("{0:0,0}", ViewBag.Tongtien) VNĐ </td>
+                                </tr>
+                                <tr style="font-weight: bold; color: yellow; text-align: right; background-color: #2d485a ">
+                                    <td colspan="9">
+                                        @Html.ActionLink("Xóa Giỏ Hàng", "XoaTatcaGiohang")
+                                    </td>
+                                </tr>
+                                <tr style="font-weight: bold; color: yellow; text-align: right; background-color: #2d485a ">
+                                    <td colspan="9" align="center">
+                                        @Html.ActionLink("ĐẶT HÀNG", "Dathang", "GioHang")
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>

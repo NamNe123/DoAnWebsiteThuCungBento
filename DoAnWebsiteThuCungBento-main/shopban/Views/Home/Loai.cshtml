@@ -1,0 +1,6 @@
+﻿@model IEnumerable<shopban.Models.LOAI>
+
+@foreach (var item in Model)
+{
+    <li><a href="@Url.Action("SPLoai","Sanpham",new { id = item.MaL })">@item.TenLoai</a></li>
+}

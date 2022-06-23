@@ -1,0 +1,47 @@
+﻿@model IEnumerable<shopban.Models.LOAI>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Quản lý các loại sản phẩm</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới loại sản phẩm", "Themmoil")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Mã loại
+        </th>
+        <th>
+            Tên danh mục
+        </th>
+        <th>
+            Tên loại
+        </th>
+        <th>
+            Chức năng
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.MaL)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DANHMUC.TenDanhMuc)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TenLoai)
+    </td>
+    <td>
+        @Html.ActionLink("Sửa", "Sual", new { id = item.MaL }) |
+        @Html.ActionLink("Chi tiết", "Details", new { id = item.MaL }) |
+        @Html.ActionLink("Xóa", "Xoal", new { id = item.MaL })
+    </td>
+</tr>
+}
+</table>

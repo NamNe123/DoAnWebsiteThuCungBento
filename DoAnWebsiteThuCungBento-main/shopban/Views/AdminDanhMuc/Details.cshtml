@@ -1,0 +1,26 @@
+﻿@model shopban.Models.DANHMUC
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Chi tiết danh mục</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên danh mục:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenDanhMuc)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Nhấn để sửa", "SuaDm", new { id = Model.MaDM }) |
+    @Html.ActionLink("Trở về danh sách", "Index")
+</p>

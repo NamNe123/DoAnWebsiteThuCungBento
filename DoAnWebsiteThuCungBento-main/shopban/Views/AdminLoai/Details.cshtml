@@ -1,0 +1,34 @@
+﻿@model shopban.Models.LOAI
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Chi tiết</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Mã danh mục:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaDM)
+        </dd>
+
+        <dt>
+            Tên loại:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenLoai)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Nhấn để sửa", "Sual", new { id = Model.MaL }) |
+    @Html.ActionLink("Trở về danh sách", "Index")
+</p>

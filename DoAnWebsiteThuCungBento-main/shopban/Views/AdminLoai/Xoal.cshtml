@@ -1,0 +1,40 @@
+﻿@model shopban.Models.LOAI
+
+@{
+    ViewBag.Title = "Xoal";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Xóa loại sản phẩm</h2>
+
+<h3>Bạn chắc chắn muốn xóa loại sản phẩm này?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Mã danh mục:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaDM)
+        </dd>
+
+        <dt>
+            Tên loại:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenLoai)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Trở về danh sách", "Index")
+        </div>
+    }
+</div>
